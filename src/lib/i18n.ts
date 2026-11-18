@@ -37,6 +37,7 @@ const vi = {
   nav: {
     about: "Về tôi",
     ai: "Giải pháp AI",
+    process: "Quy trình",
     engineering: "Kỹ thuật",
     marketing: "Marketing",
     business: "Hợp tác",
@@ -53,6 +54,10 @@ const vi = {
     lead: "Kết hợp trí tuệ nhân tạo, công nghệ và tư duy kinh doanh để phát triển những giải pháp thực tế.",
     primary: "Khám phá dịch vụ",
     secondary: "Liên hệ hợp tác",
+    chips: [
+      { title: "AI · 3D · ADS · B2B", sub: "Bốn lĩnh vực, một đầu mối" },
+      { title: "Việt Nam – Đài Loan", sub: "Tiếng Việt · English · 中文" },
+    ],
   },
   pillars: [
     { code: "AI", label: "Trí tuệ nhân tạo", href: "#ai" },
@@ -61,6 +66,12 @@ const vi = {
     { code: "B2B", label: "Hợp tác kinh doanh", href: "#business" },
   ],
   about: {
+    label: "Về tôi",
+    facts: [
+      { value: "4", label: "Lĩnh vực dịch vụ" },
+      { value: "3", label: "Ngôn ngữ phục vụ" },
+      { value: "2", label: "Thị trường" },
+    ],
     title: "Công nghệ chỉ có giá trị khi giải quyết được việc thật.",
     story: [
       "HOANG LONG AI bắt đầu từ một câu hỏi: làm sao để một cá nhân hay doanh nghiệp nhỏ dùng được công nghệ mới mà không cần một phòng IT?",
@@ -87,6 +98,19 @@ const vi = {
       { title: "AI hỗ trợ marketing", body: "Lên ý tưởng chiến dịch, viết nội dung, thử nghiệm nhiều phiên bản quảng cáo và đọc số liệu nhanh hơn.", tags: ["Ý tưởng", "Nội dung", "Phân tích"] },
       { title: "Giải pháp nội dung số", body: "Kế hoạch và sản xuất nội dung đều đặn cho website, fanpage và kênh video của doanh nghiệp.", tags: ["Kế hoạch", "Sản xuất", "Đa kênh"] },
     ] as Item[],
+    cta: "Tư vấn giải pháp",
+  },
+  process: {
+    label: "Quy trình",
+    title: "Từ ý tưởng đến kết quả đo được",
+    intro: "Mỗi dự án đi qua bốn bước rõ ràng, để bạn luôn biết việc đang ở đâu.",
+    cta: "Bắt đầu dự án",
+    steps: [
+      { title: "Tìm hiểu", body: "Nghe mục tiêu, xem cách bạn đang làm việc và xác định chỗ công nghệ tạo ra khác biệt lớn nhất." },
+      { title: "Thiết kế giải pháp", body: "Đề xuất phạm vi, công cụ, thời gian và chi phí bằng văn bản trước khi bắt tay vào làm." },
+      { title: "Xây dựng", body: "Thực hiện và cho bạn xem từng phần sớm, để chỉnh hướng khi còn rẻ." },
+      { title: "Triển khai & tối ưu", body: "Bàn giao, hướng dẫn sử dụng và đo lại kết quả để cải tiến tiếp." },
+    ] as Item[],
   },
   engineering: {
     title: "Thiết kế & kỹ thuật",
@@ -99,6 +123,10 @@ const vi = {
       { title: "Sản phẩm và dự án kỹ thuật", body: "Nhận dự án trọn gói hoặc từng phần: thiết kế, lập trình, tư vấn sản xuất." },
     ] as Item[],
     drawingCaption: "Bản vẽ chi tiết và đường chạy dao",
+    panels: [
+      { title: "CAD", body: "Nền tảng của mọi sản phẩm kỹ thuật: bản vẽ và mô hình chính xác.", tags: ["Bản vẽ kỹ thuật 2D", "Mô hình 3D sản phẩm", "Hình ảnh trình bày"] },
+      { title: "CAM", body: "Gia công nhanh và chính xác: đường chạy dao tối ưu, chương trình đã mô phỏng.", tags: ["Chiến lược gia công", "Lập trình CNC", "Mô phỏng trước khi chạy"] },
+    ] as Item[],
   },
   marketing: {
     title: "Marketing số",
@@ -110,6 +138,7 @@ const vi = {
       { title: "Facebook, TikTok, YouTube", body: "Nội dung và quảng cáo được thiết kế riêng cho cách xem của từng nền tảng." },
     ] as Item[],
     channels: ["Facebook", "TikTok", "YouTube", "Google", "Zalo", "LINE"],
+    channelsLabel: "Nền tảng triển khai",
   },
   business: {
     title: "Hợp tác kinh doanh",
@@ -176,6 +205,7 @@ const en: Dict = {
   nav: {
     about: "About",
     ai: "AI Solutions",
+    process: "Process",
     engineering: "Engineering",
     marketing: "Marketing",
     business: "Partnership",
@@ -192,6 +222,10 @@ const en: Dict = {
     lead: "Combining artificial intelligence, technology and business thinking to build solutions that work in practice.",
     primary: "Explore services",
     secondary: "Start a partnership",
+    chips: [
+      { title: "AI · 3D · ADS · B2B", sub: "Four fields, one contact" },
+      { title: "Vietnam – Taiwan", sub: "Tiếng Việt · English · 中文" },
+    ],
   },
   pillars: [
     { code: "AI", label: "Artificial Intelligence", href: "#ai" },
@@ -200,6 +234,12 @@ const en: Dict = {
     { code: "B2B", label: "Business Partnership", href: "#business" },
   ],
   about: {
+    label: "About me",
+    facts: [
+      { value: "4", label: "Service fields" },
+      { value: "3", label: "Languages served" },
+      { value: "2", label: "Markets" },
+    ],
     title: "Technology only matters when it solves real work.",
     story: [
       "HOANG LONG AI started with one question: how can an individual or a small business use new technology without an IT department?",
@@ -226,6 +266,19 @@ const en: Dict = {
       { title: "AI for marketing", body: "Campaign ideas, copywriting, testing many ad variants and reading the numbers faster.", tags: ["Ideas", "Copy", "Analytics"] },
       { title: "Digital content", body: "Planning and producing steady content for your website, fan page and video channels.", tags: ["Planning", "Production", "Multi-channel"] },
     ],
+    cta: "Get advice",
+  },
+  process: {
+    label: "Process",
+    title: "From idea to measurable result",
+    intro: "Every project moves through four clear steps, so you always know where things stand.",
+    cta: "Start a project",
+    steps: [
+      { title: "Discover", body: "Understand your goals, see how you work today and find where technology makes the biggest difference." },
+      { title: "Design the solution", body: "Agree scope, tools, timeline and price in writing before any work starts." },
+      { title: "Build", body: "Deliver in visible pieces early, so direction can change while it is still cheap." },
+      { title: "Launch & improve", body: "Hand over, train your team and measure the result to keep improving." },
+    ],
   },
   engineering: {
     title: "Design & Engineering",
@@ -238,6 +291,10 @@ const en: Dict = {
       { title: "Engineering projects", body: "Full projects or individual stages: design, programming, production advice." },
     ],
     drawingCaption: "Part drawing and toolpath",
+    panels: [
+      { title: "CAD", body: "The basis of every engineered product: precise drawings and models.", tags: ["2D technical drawings", "3D product models", "Presentation renders"] },
+      { title: "CAM", body: "Fast, accurate machining: optimized toolpaths and simulated programs.", tags: ["Machining strategy", "CNC programming", "Simulation before cutting"] },
+    ],
   },
   marketing: {
     title: "Digital Marketing",
@@ -249,6 +306,7 @@ const en: Dict = {
       { title: "Facebook, TikTok, YouTube", body: "Content and ads designed for how each platform is actually watched." },
     ],
     channels: ["Facebook", "TikTok", "YouTube", "Google", "Zalo", "LINE"],
+    channelsLabel: "Platforms we run",
   },
   business: {
     title: "Business Partnership",
@@ -313,6 +371,7 @@ const zhTW: Dict = {
   nav: {
     about: "關於我",
     ai: "AI 解決方案",
+    process: "流程",
     engineering: "設計工程",
     marketing: "數位行銷",
     business: "商業合作",
@@ -329,6 +388,10 @@ const zhTW: Dict = {
     lead: "結合人工智慧、科技與商業思維，打造真正落地的解決方案。",
     primary: "瀏覽服務",
     secondary: "洽談合作",
+    chips: [
+      { title: "AI · 3D · ADS · B2B", sub: "四大領域，單一窗口" },
+      { title: "越南 – 台灣", sub: "Tiếng Việt · English · 中文" },
+    ],
   },
   pillars: [
     { code: "AI", label: "人工智慧", href: "#ai" },
@@ -337,6 +400,12 @@ const zhTW: Dict = {
     { code: "B2B", label: "商業合作", href: "#business" },
   ],
   about: {
+    label: "關於我",
+    facts: [
+      { value: "4", label: "服務領域" },
+      { value: "3", label: "服務語言" },
+      { value: "2", label: "市場" },
+    ],
     title: "科技的價值，在於解決真正的問題。",
     story: [
       "HOANG LONG AI 從一個問題開始：個人或小型企業，如何在沒有 IT 部門的情況下運用新科技？",
@@ -362,6 +431,19 @@ const zhTW: Dict = {
       { title: "AI 行銷輔助", body: "更快地發想活動、撰寫文案、測試多版本廣告並解讀數據。", tags: ["發想", "文案", "分析"] },
       { title: "數位內容方案", body: "為網站、粉絲專頁與影音頻道規劃並穩定產出內容。", tags: ["規劃", "製作", "多平台"] },
     ],
+    cta: "諮詢方案",
+  },
+  process: {
+    label: "合作流程",
+    title: "從構想到可衡量的成果",
+    intro: "每個專案都經過四個清楚的步驟，讓您隨時掌握進度。",
+    cta: "開始專案",
+    steps: [
+      { title: "了解需求", body: "傾聽目標、了解現行作業方式，找出科技最能發揮作用的地方。" },
+      { title: "規劃方案", body: "開工前以書面確認範圍、工具、時程與費用。" },
+      { title: "執行建置", body: "分階段提早呈現成果，在調整成本仍低時修正方向。" },
+      { title: "上線與優化", body: "交付、教學，並追蹤成果持續改進。" },
+    ],
   },
   engineering: {
     title: "設計與工程",
@@ -374,6 +456,10 @@ const zhTW: Dict = {
       { title: "工程專案", body: "可承接整案或單一階段：設計、程式、生產諮詢。" },
     ],
     drawingCaption: "零件圖面與刀具路徑",
+    panels: [
+      { title: "CAD", body: "所有工程產品的基礎：精準的圖面與模型。", tags: ["2D 工程圖", "3D 產品模型", "提案渲染圖"] },
+      { title: "CAM", body: "快速且精準的加工：最佳化刀具路徑與經模擬的程式。", tags: ["加工策略", "CNC 程式設計", "上機前模擬"] },
+    ],
   },
   marketing: {
     title: "數位行銷",
@@ -385,6 +471,7 @@ const zhTW: Dict = {
       { title: "Facebook、TikTok、YouTube", body: "依各平台的觀看習慣量身設計內容與廣告。" },
     ],
     channels: ["Facebook", "TikTok", "YouTube", "Google", "Zalo", "LINE"],
+    channelsLabel: "經營平台",
   },
   business: {
     title: "商業合作",

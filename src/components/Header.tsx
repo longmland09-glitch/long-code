@@ -31,6 +31,7 @@ export default function Header({ locale, t, home = true }: Props) {
   const items = [
     ["#about", t.nav.about],
     ["#ai", t.nav.ai],
+    ["#process", t.nav.process],
     ["#engineering", t.nav.engineering],
     ["#marketing", t.nav.marketing],
     ["#business", t.nav.business],
