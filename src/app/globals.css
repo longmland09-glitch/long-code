@@ -675,7 +675,16 @@ section[id] {
   height: auto;
 }
 
+.portrait:has(img)::after {
+  content: "";
+  position: absolute;
+  inset: 55% 0 0;
+  background: linear-gradient(180deg, transparent, rgba(5, 10, 23, 0.92));
+  pointer-events: none;
+}
+
 .portrait figcaption {
+  z-index: 1;
   position: absolute;
   left: 24px;
   right: 24px;
@@ -1258,7 +1267,14 @@ section[id] {
   margin-top: 36px;
 }
 
-.channel-list a {
+.channel-list a,
+.channel-list button {
+  width: 100%;
+  background: transparent;
+  color: var(--white);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1270,6 +1286,7 @@ section[id] {
   transition: border-color 180ms var(--ease-out), background-color 180ms var(--ease-out);
 }
 
+.channel-list button:hover,
 .channel-list a:hover {
   border-color: var(--cyan);
   background: rgba(0, 213, 255, 0.06);

@@ -4,6 +4,7 @@ import { posts } from "@/lib/posts";
 import { links, site } from "@/lib/site";
 import Blueprint from "./Blueprint";
 import ContactForm from "./ContactForm";
+import CopyChannel from "./CopyChannel";
 import Footer from "./Footer";
 import Header from "./Header";
 import HeroLattice from "./HeroLattice";
@@ -89,7 +90,7 @@ export default function Home({ locale }: { locale: Locale }) {
             <figure className="portrait">
               {site.portrait ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={site.portrait} alt={t.about.portraitAlt} width={460} height={575} loading="lazy" />
+                <img src={site.portrait} alt={t.about.portraitAlt} width={920} height={1150} loading="lazy" decoding="async" />
               ) : (
                 <div className="portrait-mark">
                   <Monogram />
@@ -301,23 +302,25 @@ export default function Home({ locale }: { locale: Locale }) {
                   </a>
                 </li>
                 <li>
-                  <a href={links.line} target="_blank" rel="noopener noreferrer">
-                    <Bubble />
-                    <span>
-                      {t.contact.channels.line}
-                      <small>{site.contact.lineId}</small>
-                    </span>
-                  </a>
+                  <CopyChannel
+                    label={t.contact.channels.line}
+                    value={site.contact.linePhone}
+                    hint={t.contact.lineHint}
+                    copied={t.contact.copied}
+                    icon={<Bubble />}
+                  />
                 </li>
-                <li>
-                  <a href={links.facebook} target="_blank" rel="noopener noreferrer">
-                    <Globe />
-                    <span>
-                      {t.contact.channels.facebook}
-                      <small>{links.facebook.replace(/^https?:\/\/(www\.)?/, "")}</small>
-                    </span>
-                  </a>
-                </li>
+                {links.facebook && (
+                  <li>
+                    <a href={links.facebook} target="_blank" rel="noopener noreferrer">
+                      <Globe />
+                      <span>
+                        {t.contact.channels.facebook}
+                        <small>{links.facebook.replace(/^https?:\/\/(www\.)?/, "")}</small>
+                      </span>
+                    </a>
+                  </li>
+                )}
                 <li>
                   <a href={links.email}>
                     <Mail />

@@ -16,7 +16,8 @@ const jsonLd = {
   founder: { "@type": "Person", name: site.owner },
   email: site.contact.email,
   areaServed: ["VN", "TW"],
-  sameAs: [site.contact.facebook],
+  ...(site.contact.facebook ? { sameAs: [site.contact.facebook] } : {}),
+  image: site.url + "/portrait.jpg",
   knowsAbout: ["Artificial intelligence", "CAD/CAM", "CNC programming", "3D design", "Digital marketing"],
 };
 

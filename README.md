@@ -33,10 +33,10 @@ npm run build      # tạo thư mục out/ chứa toàn bộ website
 
 ## Cần làm trước khi đưa lên mạng
 
-- [ ] Thay thông tin liên hệ mẫu trong `src/lib/site.ts` (số Zalo, LINE ID, Facebook, email, tên miền).
+- [ ] Thêm link Facebook vào `src/lib/site.ts` (đang để trống nên nút Facebook bị ẩn).
 - [ ] Đọc lại phần "Về tôi" trong `src/lib/i18n.ts` và viết lại theo câu chuyện thật của bạn.
 - [ ] Kiểm tra câu "phản hồi trong vòng một ngày làm việc" có đúng với cách bạn làm việc không.
-- [ ] Thêm ảnh chân dung (nếu muốn).
+- [ ] Khi có tên miền riêng, đổi `url` trong `src/lib/site.ts`.
 
 ## Form liên hệ
 

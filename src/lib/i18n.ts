@@ -66,7 +66,7 @@ const vi = {
       "HOANG LONG AI bắt đầu từ một câu hỏi: làm sao để một cá nhân hay doanh nghiệp nhỏ dùng được công nghệ mới mà không cần một phòng IT?",
       "Câu trả lời của tôi là đứng ở giữa — hiểu công cụ AI, hiểu bản vẽ kỹ thuật và máy CNC, hiểu cả quảng cáo và bán hàng — để biến một yêu cầu mơ hồ thành sản phẩm cụ thể, có thể dùng ngay.",
     ],
-    portraitAlt: "Chân dung Hoang Long",
+    portraitAlt: "Chân dung Hoàng Minh Long, nhà sáng lập HOANG LONG AI",
     valuesTitle: "Điều khách hàng nhận được",
     values: [
       { title: "Một đầu mối", body: "AI, kỹ thuật và marketing trong cùng một người phụ trách. Không phải chuyển qua nhiều bên." },
@@ -143,6 +143,8 @@ const vi = {
     title: "Bắt đầu một dự án",
     intro: "Nhắn trực tiếp qua kênh bạn quen dùng, hoặc gửi yêu cầu bên dưới. Tôi sẽ phản hồi trong vòng một ngày làm việc.",
     channels: { zalo: "Zalo", line: "LINE", facebook: "Facebook", email: "Email" },
+    lineHint: "Bấm để chép số, rồi tìm trong LINE",
+    copied: "Đã chép số LINE",
     form: {
       name: "Họ và tên",
       reach: "Số điện thoại hoặc email",
@@ -153,7 +155,7 @@ const vi = {
       messageHelp: "Mục tiêu, thời gian mong muốn, ngân sách dự kiến (nếu có).",
       submit: "Gửi yêu cầu",
       required: "Vui lòng điền mục này.",
-      sent: "Ứng dụng email của bạn đã được mở sẵn nội dung. Bấm Gửi trong email để hoàn tất — hoặc nhắn trực tiếp qua Zalo.",
+      sent: "Ứng dụng email của bạn đã được mở sẵn nội dung. Bấm Gửi trong email để hoàn tất — hoặc nhắn trực tiếp qua Zalo 0931 268 123.",
       subject: "Yêu cầu hợp tác",
     },
   },
@@ -203,7 +205,7 @@ const en: Dict = {
       "HOANG LONG AI started with one question: how can an individual or a small business use new technology without an IT department?",
       "My answer is to stand in the middle — understanding AI tools, technical drawings and CNC machines, advertising and sales — and turn a vague request into a concrete product you can use right away.",
     ],
-    portraitAlt: "Portrait of Hoang Long",
+    portraitAlt: "Portrait of Hoang Minh Long, founder of HOANG LONG AI",
     valuesTitle: "What clients get",
     values: [
       { title: "One point of contact", body: "AI, engineering and marketing handled by one person. No hand-offs between vendors." },
@@ -280,6 +282,8 @@ const en: Dict = {
     title: "Start a project",
     intro: "Message me on the channel you already use, or send a request below. I reply within one business day.",
     channels: { zalo: "Zalo", line: "LINE", facebook: "Facebook", email: "Email" },
+    lineHint: "Tap to copy, then search it in LINE",
+    copied: "LINE number copied",
     form: {
       name: "Full name",
       reach: "Phone or email",
@@ -338,7 +342,7 @@ const zhTW: Dict = {
       "HOANG LONG AI 從一個問題開始：個人或小型企業，如何在沒有 IT 部門的情況下運用新科技？",
       "我的答案是站在中間——懂 AI 工具、懂工程圖與 CNC 機台，也懂廣告與銷售——把模糊的需求變成可以立即使用的具體成果。",
     ],
-    portraitAlt: "Hoang Long 個人照",
+    portraitAlt: "HOANG LONG AI 創辦人 Hoang Minh Long 個人照",
     valuesTitle: "客戶能得到什麼",
     values: [
       { title: "單一窗口", body: "AI、工程與行銷由同一人負責，不必在多家廠商之間來回溝通。" },
@@ -414,6 +418,8 @@ const zhTW: Dict = {
     title: "開始一個專案",
     intro: "透過您慣用的平台直接聯繫，或在下方送出需求。我會在一個工作天內回覆。",
     channels: { zalo: "Zalo", line: "LINE", facebook: "Facebook", email: "Email" },
+    lineHint: "點擊複製號碼，再到 LINE 搜尋",
+    copied: "已複製 LINE 號碼",
     form: {
       name: "姓名",
       reach: "電話或 Email",
