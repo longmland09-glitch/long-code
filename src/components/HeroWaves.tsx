@@ -21,8 +21,8 @@ export default function HeroWaves() {
 
     // two ribbons: a teal one and a blue one
     const ribbons = [
-      { strands: 26, y: 0.58, amp: 0.16, freq: 1.4, speed: 0.12, spread: 0.07, color: [0, 213, 200], tilt: -0.22 },
-      { strands: 22, y: 0.5, amp: 0.12, freq: 1.9, speed: -0.09, spread: 0.06, color: [22, 119, 255], tilt: -0.3 },
+      { strands: 26, y: 0.58, amp: 0.16, freq: 1.4, speed: 0.12, spread: 0.07, color: [0, 213, 200], lightColor: [0, 150, 170], tilt: -0.22 },
+      { strands: 22, y: 0.5, amp: 0.12, freq: 1.9, speed: -0.09, spread: 0.06, color: [22, 119, 255], lightColor: [11, 99, 229], tilt: -0.3 },
     ];
     const dust = Array.from({ length: 90 }, (_, i) => ({
       x: (i * 0.6180339) % 1,
@@ -44,13 +44,15 @@ export default function HeroWaves() {
 
     const draw = (t: number) => {
       ctx.clearRect(0, 0, w, h);
-      ctx.globalCompositeOperation = "lighter";
+      const light = document.documentElement.dataset.theme === "light";
+      ctx.globalCompositeOperation = light ? "source-over" : "lighter";
       const seg = Math.max(40, Math.round(w / 18));
       for (const rb of ribbons) {
         for (let s = 0; s < rb.strands; s++) {
           const k = s / (rb.strands - 1) - 0.5; // -0.5..0.5 across the bundle
-          const a = 0.05 + 0.13 * (1 - Math.abs(k) * 2);
-          ctx.strokeStyle = `rgba(${rb.color[0]},${rb.color[1]},${rb.color[2]},${a})`;
+          const a = (0.05 + 0.13 * (1 - Math.abs(k) * 2)) * (light ? 1.3 : 1);
+          const c = light ? rb.lightColor : rb.color;
+          ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${a})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           for (let i = 0; i <= seg; i++) {
@@ -71,7 +73,7 @@ export default function HeroWaves() {
       for (const d of dust) {
         const x = ((d.x + t * d.s) % 1) * w;
         const y = (d.y + Math.sin(t * 0.3 + d.x * 9) * 0.01) * h;
-        ctx.fillStyle = "rgba(168,179,199,0.45)";
+        ctx.fillStyle = light ? "rgba(74,86,112,0.35)" : "rgba(168,179,199,0.45)";
         ctx.beginPath();
         ctx.arc(x, y, d.r, 0, Math.PI * 2);
         ctx.fill();
@@ -99,12 +101,15 @@ export default function HeroWaves() {
       visible ? play() : pause();
     });
     io.observe(canvas);
+    const mo = new MutationObserver(() => reduce && draw(0));
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
     const onVis = () => (document.hidden ? pause() : play());
     document.addEventListener("visibilitychange", onVis);
     reduce ? draw(0) : play();
 
     return () => {
       pause();
+      mo.disconnect();
       ro.disconnect();
       io.disconnect();
       document.removeEventListener("visibilitychange", onVis);

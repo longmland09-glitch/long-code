@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import HeroLattice from "./HeroLattice";
 import HeroWaves from "./HeroWaves";
+import Products3D from "./Products3D";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -78,6 +79,17 @@ export default function Home({ locale }: { locale: Locale }) {
               </div>
               <div className="hero-visual">
                 <HeroLattice />
+                <div className="hero-photo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/hero-portrait.webp"
+                    alt={t.about.portraitAlt}
+                    width={760}
+                    height={950}
+                    fetchPriority="high"
+                    decoding="async"
+                  />
+                </div>
                 <div className="glass-chip chip-a">
                   <Monogram />
                   <span>
@@ -265,6 +277,20 @@ export default function Home({ locale }: { locale: Locale }) {
                 </dl>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* ───── 3D Products ───── */}
+        <section id="products" className="section" aria-labelledby="products-title">
+          <div className="wrap">
+            <div className="section-head">
+              <div>
+                <p className="kicker">{t.products.label}</p>
+                <h2 id="products-title">{t.products.title}</h2>
+              </div>
+              <p>{t.products.intro}</p>
+            </div>
+            <Products3D t={t.products} />
           </div>
         </section>
 

@@ -24,7 +24,15 @@ const jsonLd = {
 /** Shared <html>/<body> for every root layout. */
 export default function Document({ locale, children }: { locale: Locale; children: ReactNode }) {
   return (
-    <html lang={htmlLang[locale]}>
+    <html lang={htmlLang[locale]} data-theme="dark" suppressHydrationWarning>
+      <head>
+        {/* apply the saved theme before first paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         {children}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

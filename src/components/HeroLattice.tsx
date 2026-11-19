@@ -106,6 +106,7 @@ export default function HeroLattice() {
       ctx.clearRect(0, 0, w, h);
       const t = (now - start) / 1000;
       const link = 0.13;
+      const light = document.documentElement.dataset.theme === "light";
 
       // links
       for (let i = 0; i < nodes.length; i++) {
@@ -118,8 +119,8 @@ export default function HeroLattice() {
           const k = 1 - Math.sqrt(d2) / link;
           const both = a.glyph && b.glyph;
           ctx.strokeStyle = both
-            ? `rgba(0, 213, 255, ${0.55 * k})`
-            : `rgba(22, 119, 255, ${0.32 * k})`;
+            ? light ? `rgba(11, 99, 229, ${0.6 * k})` : `rgba(0, 213, 255, ${0.55 * k})`
+            : light ? `rgba(11, 99, 229, ${0.3 * k})` : `rgba(22, 119, 255, ${0.32 * k})`;
           ctx.lineWidth = both ? 1 : 0.7;
           ctx.beginPath();
           ctx.moveTo(ox + a.x * size, oy + a.y * size);
@@ -130,7 +131,9 @@ export default function HeroLattice() {
       // nodes
       for (const n of nodes) {
         const pulse = reduce ? 1 : 0.75 + 0.25 * Math.sin(t * 1.6 + n.phase);
-        ctx.fillStyle = n.glyph ? `rgba(255,255,255,${0.9 * pulse})` : `rgba(168,179,199,${0.55 * pulse})`;
+        ctx.fillStyle = n.glyph
+          ? light ? `rgba(8,15,32,${0.85 * pulse})` : `rgba(255,255,255,${0.9 * pulse})`
+          : light ? `rgba(74,86,112,${0.5 * pulse})` : `rgba(168,179,199,${0.55 * pulse})`;
         ctx.beginPath();
         ctx.arc(ox + n.x * size, oy + n.y * size, n.r, 0, Math.PI * 2);
         ctx.fill();
@@ -198,12 +201,17 @@ export default function HeroLattice() {
     host.addEventListener("pointermove", onMove);
     host.addEventListener("pointerleave", onLeave);
 
+    // redraw the static frame when the theme changes
+    const mo = new MutationObserver(() => reduce && draw(performance.now()));
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
     start = performance.now();
     if (reduce) draw(start);
     else play();
 
     return () => {
       pause();
+      mo.disconnect();
       ro.disconnect();
       io.disconnect();
       document.removeEventListener("visibilitychange", onVis);

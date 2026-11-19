@@ -27,6 +27,7 @@ export function base(locale: Locale) {
 }
 
 type Item = { title: string; body: string; tags?: string[] };
+export type Product = { name: string; desc: string; specs: [string, string][] };
 
 const vi = {
   meta: {
@@ -47,6 +48,8 @@ const vi = {
     close: "Đóng menu",
     skip: "Bỏ qua, tới nội dung chính",
     language: "Ngôn ngữ",
+    themeLight: "Chuyển sang giao diện sáng",
+    themeDark: "Chuyển sang giao diện tối",
   },
   hero: {
     tagline: "Technology · Innovation · Business",
@@ -61,7 +64,7 @@ const vi = {
   },
   pillars: [
     { code: "AI", label: "Trí tuệ nhân tạo", href: "#ai" },
-    { code: "3D", label: "Thiết kế & kỹ thuật", href: "#engineering" },
+    { code: "3D", label: "Thiết kế & kỹ thuật", href: "#products" },
     { code: "ADS", label: "Marketing số", href: "#marketing" },
     { code: "B2B", label: "Hợp tác kinh doanh", href: "#business" },
   ],
@@ -127,6 +130,22 @@ const vi = {
       { title: "CAD", body: "Nền tảng của mọi sản phẩm kỹ thuật: bản vẽ và mô hình chính xác.", tags: ["Bản vẽ kỹ thuật 2D", "Mô hình 3D sản phẩm", "Hình ảnh trình bày"] },
       { title: "CAM", body: "Gia công nhanh và chính xác: đường chạy dao tối ưu, chương trình đã mô phỏng.", tags: ["Chiến lược gia công", "Lập trình CNC", "Mô phỏng trước khi chạy"] },
     ] as Item[],
+  },
+  products: {
+    label: "Sản phẩm 3D",
+    title: "Mô hình 3D và chi tiết gia công",
+    intro: "Một số chi tiết cơ khí được dựng 3D để thể hiện quy trình thiết kế đến gia công. Kéo để xoay mô hình.",
+    sample: "Mô hình mẫu minh họa",
+    wire: "Xem khung dây",
+    solid: "Xem khối đặc",
+    drag: "Kéo để xoay",
+    loading: "Đang tải mô hình 3D…",
+    items: [
+      { name: "Bánh răng trụ", desc: "Bánh răng răng thẳng 18 răng, có rãnh then để truyền mô-men xoắn.", specs: [["Vật liệu", "Thép C45"], ["Số răng", "18"], ["Gia công", "Phay CNC + xử lý nhiệt"]] },
+      { name: "Gá kẹp chữ U", desc: "Chi tiết gá có rãnh định vị và hai lỗ lắp chính xác, cùng bản vẽ ở phần Kỹ thuật.", specs: [["Vật liệu", "Nhôm 6061"], ["Kích thước", "160 × 90 × 30 mm"], ["Gia công", "Phay CNC 3 trục"]] },
+      { name: "Mặt bích", desc: "Mặt bích có cổ, sáu lỗ bu-lông phân bố đều để nối đường ống hoặc trục.", specs: [["Vật liệu", "Inox SUS304"], ["Đường kính", "Ø120 mm"], ["Gia công", "Tiện CNC + khoan"]] },
+      { name: "Trục bậc", desc: "Trục nhiều bậc có vát mép hai đầu, dùng cho ổ lăn và khớp nối.", specs: [["Vật liệu", "Thép C45"], ["Chiều dài", "240 mm"], ["Gia công", "Tiện CNC"]] },
+    ] as Product[],
   },
   marketing: {
     title: "Marketing số",
@@ -215,6 +234,8 @@ const en: Dict = {
     close: "Close menu",
     skip: "Skip to main content",
     language: "Language",
+    themeLight: "Switch to light theme",
+    themeDark: "Switch to dark theme",
   },
   hero: {
     tagline: "Technology · Innovation · Business",
@@ -229,7 +250,7 @@ const en: Dict = {
   },
   pillars: [
     { code: "AI", label: "Artificial Intelligence", href: "#ai" },
-    { code: "3D", label: "Design & Engineering", href: "#engineering" },
+    { code: "3D", label: "Design & Engineering", href: "#products" },
     { code: "ADS", label: "Digital Marketing", href: "#marketing" },
     { code: "B2B", label: "Business Partnership", href: "#business" },
   ],
@@ -294,6 +315,22 @@ const en: Dict = {
     panels: [
       { title: "CAD", body: "The basis of every engineered product: precise drawings and models.", tags: ["2D technical drawings", "3D product models", "Presentation renders"] },
       { title: "CAM", body: "Fast, accurate machining: optimized toolpaths and simulated programs.", tags: ["Machining strategy", "CNC programming", "Simulation before cutting"] },
+    ],
+  },
+  products: {
+    label: "3D Products",
+    title: "3D models and machined parts",
+    intro: "A few mechanical parts modelled in 3D to show the path from design to machining. Drag to rotate.",
+    sample: "Sample model for illustration",
+    wire: "Wireframe view",
+    solid: "Solid view",
+    drag: "Drag to rotate",
+    loading: "Loading 3D model…",
+    items: [
+      { name: "Spur gear", desc: "An 18-tooth straight spur gear with a keyway for transmitting torque.", specs: [["Material", "C45 steel"], ["Teeth", "18"], ["Process", "CNC milling + heat treatment"]] },
+      { name: "U-bracket", desc: "A fixture part with a locating slot and two precision bores, matching the drawing in Engineering.", specs: [["Material", "Aluminium 6061"], ["Size", "160 × 90 × 30 mm"], ["Process", "3-axis CNC milling"]] },
+      { name: "Flange", desc: "A weld-neck style flange with six evenly spaced bolt holes for pipes or shafts.", specs: [["Material", "SUS304 stainless"], ["Diameter", "Ø120 mm"], ["Process", "CNC turning + drilling"]] },
+      { name: "Stepped shaft", desc: "A multi-step shaft with chamfered ends for bearings and couplings.", specs: [["Material", "C45 steel"], ["Length", "240 mm"], ["Process", "CNC turning"]] },
     ],
   },
   marketing: {
@@ -381,6 +418,8 @@ const zhTW: Dict = {
     close: "關閉選單",
     skip: "跳到主要內容",
     language: "語言",
+    themeLight: "切換為淺色模式",
+    themeDark: "切換為深色模式",
   },
   hero: {
     tagline: "Technology · Innovation · Business",
@@ -395,7 +434,7 @@ const zhTW: Dict = {
   },
   pillars: [
     { code: "AI", label: "人工智慧", href: "#ai" },
-    { code: "3D", label: "設計與工程", href: "#engineering" },
+    { code: "3D", label: "設計與工程", href: "#products" },
     { code: "ADS", label: "數位行銷", href: "#marketing" },
     { code: "B2B", label: "商業合作", href: "#business" },
   ],
@@ -459,6 +498,22 @@ const zhTW: Dict = {
     panels: [
       { title: "CAD", body: "所有工程產品的基礎：精準的圖面與模型。", tags: ["2D 工程圖", "3D 產品模型", "提案渲染圖"] },
       { title: "CAM", body: "快速且精準的加工：最佳化刀具路徑與經模擬的程式。", tags: ["加工策略", "CNC 程式設計", "上機前模擬"] },
+    ],
+  },
+  products: {
+    label: "3D 產品",
+    title: "3D 模型與加工零件",
+    intro: "以 3D 建模的機械零件，呈現從設計到加工的流程。拖曳即可旋轉。",
+    sample: "示範用範例模型",
+    wire: "線框檢視",
+    solid: "實體檢視",
+    drag: "拖曳旋轉",
+    loading: "3D 模型載入中…",
+    items: [
+      { name: "正齒輪", desc: "18 齒直齒正齒輪，附鍵槽以傳遞扭矩。", specs: [["材質", "S45C 鋼"], ["齒數", "18"], ["加工", "CNC 銑削 + 熱處理"]] },
+      { name: "U 型夾具", desc: "具定位槽與兩個精密孔的治具零件，與工程區塊中的圖面相同。", specs: [["材質", "鋁 6061"], ["尺寸", "160 × 90 × 30 mm"], ["加工", "三軸 CNC 銑削"]] },
+      { name: "法蘭", desc: "帶頸法蘭，六個平均分布的螺栓孔，用於連接管路或軸。", specs: [["材質", "SUS304 不鏽鋼"], ["直徑", "Ø120 mm"], ["加工", "CNC 車削 + 鑽孔"]] },
+      { name: "階梯軸", desc: "兩端倒角的多段階梯軸，用於軸承與聯軸器。", specs: [["材質", "S45C 鋼"], ["長度", "240 mm"], ["加工", "CNC 車削"]] },
     ],
   },
   marketing: {

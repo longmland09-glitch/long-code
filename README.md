@@ -27,6 +27,9 @@ npm run build      # tạo thư mục out/ chứa toàn bộ website
 | Email, Zalo, LINE, Facebook, tên miền, ảnh chân dung | `src/lib/site.ts` |
 | Mọi chữ trên trang (3 ngôn ngữ) | `src/lib/i18n.ts` |
 | Bài viết blog | `src/lib/posts.ts` |
+| Sản phẩm 3D (tên, mô tả, thông số) | `src/lib/i18n.ts` → mục `products` |
+| Hình dạng mô hình 3D | `src/components/Products3D.tsx` |
+| Ảnh đầu trang | `public/hero-portrait.webp` |
 | Màu sắc, font, khoảng cách | `src/app/globals.css` (phần *Tokens* ở đầu file) |
 
 **Thêm ảnh chân dung:** chép ảnh vào `public/portrait.jpg` (tỷ lệ 4:5), rồi trong `src/lib/site.ts` đổi `portrait: null` thành `portrait: "/portrait.jpg"`.
@@ -37,6 +40,16 @@ npm run build      # tạo thư mục out/ chứa toàn bộ website
 - [ ] Đọc lại phần "Về tôi" trong `src/lib/i18n.ts` và viết lại theo câu chuyện thật của bạn.
 - [ ] Kiểm tra câu "phản hồi trong vòng một ngày làm việc" có đúng với cách bạn làm việc không.
 - [ ] Khi có tên miền riêng, đổi `url` trong `src/lib/site.ts`.
+
+## Sản phẩm 3D
+
+Bốn mô hình hiện tại là **mẫu minh họa** được dựng bằng code (bánh răng, gá kẹp, mặt bích, trục bậc) và có nhãn "Mô hình mẫu minh họa" trên trang.
+Khi có sản phẩm thật, xuất file `.glb` từ phần mềm CAD, đặt vào `public/models/`, rồi thay hàm dựng mô hình tương ứng bằng `GLTFLoader` của Three.js.
+
+## Giao diện sáng / tối
+
+Nút mặt trời / mặt trăng trên thanh menu. Mặc định là giao diện tối; lựa chọn của khách được lưu trên trình duyệt của họ.
+Màu của giao diện sáng nằm trong khối `html[data-theme="light"]` ở đầu `src/app/globals.css`.
 
 ## Form liên hệ
 

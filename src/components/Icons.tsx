@@ -131,7 +131,7 @@ export function Monogram(props: P) {
         </linearGradient>
       </defs>
       <rect x="1" y="1" width="62" height="62" rx="14" stroke="url(#hl-g)" strokeWidth="2" />
-      <path d="M20 16v32M44 16v32" stroke="#fff" strokeWidth="5" strokeLinecap="round" />
+      <path d="M20 16v32M44 16v32" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
       <path d="M20 32h9l3-4 3 8 3-4h6" stroke="url(#hl-g)" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
       <circle cx="44" cy="16" r="3.2" fill="#00D5FF" />
     </svg>

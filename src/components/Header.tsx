@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { Dict, Locale } from "@/lib/i18n";
 import { base, locales, localeLabel } from "@/lib/i18n";
 import { Close, Menu, Monogram } from "./Icons";
+import ThemeToggle from "./ThemeToggle";
 
 type Props = { locale: Locale; t: Dict; home?: boolean };
 
@@ -78,6 +79,7 @@ export default function Header({ locale, t, home = true }: Props) {
 
         <div className="header-actions">
           <div className="nav">{langSwitch}</div>
+          <ThemeToggle toLight={t.nav.themeLight} toDark={t.nav.themeDark} />
           <a className="btn btn-primary header-cta" href={href("#contact")}>
             {t.nav.contact}
           </a>
