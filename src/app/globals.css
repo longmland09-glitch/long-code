@@ -2381,3 +2381,32 @@ body {
   align-self: flex-start;
   margin-top: auto;
 }
+
+/* real-machine photo beside the 3D model */
+.product-photo {
+  position: relative;
+  display: block;
+  width: min(100%, 240px);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: #000;
+}
+.product-photo img {
+  width: 100%;
+  height: auto;
+  transition: transform 300ms var(--ease-out);
+}
+.product-photo:hover img {
+  transform: scale(1.04);
+}
+.product-photo span {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(8, 15, 32, 0.75);
+  color: var(--white);
+  font-size: 0.75rem;
+}

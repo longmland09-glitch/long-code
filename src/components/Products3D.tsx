@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Dict } from "@/lib/i18n";
 import { deflux } from "./deflux";
+import { mv1200s } from "./mv1200s";
 
 type T = Dict["products"];
 type Three = typeof import("three");
@@ -109,7 +110,7 @@ function shaft(THREE: Three) {
   return g;
 }
 
-const builders = [deflux, gear, bracket, flange, shaft];
+const builders = [deflux, mv1200s, gear, bracket, flange, shaft];
 
 export default function Products3D({ t }: { t: T }) {
   const host = useRef<HTMLDivElement>(null);
@@ -163,11 +164,18 @@ export default function Products3D({ t }: { t: T }) {
         let current: InstanceType<Three["Group"]> | null = null;
         let wireOn = false;
 
-        const disposeObj = (o: InstanceType<Three["Object3D"]>) =>
+        const disposeObj = (o: InstanceType<Three["Object3D"]>) => {
           o.traverse((c) => {
             const m = c as unknown as { geometry?: { dispose(): void } };
             m.geometry?.dispose();
           });
+          // models with their own materials (e.g. the MV1200S) also own their textures
+          for (const m of (o.userData.materials ?? []) as { map?: { dispose(): void } | null; dispose(): void }[]) {
+            m.map?.dispose();
+            m.dispose();
+          }
+        };
+        let styledMats: { wireframe?: boolean }[] = [];
 
         const show = (i: number) => {
           if (current) {
@@ -176,14 +184,23 @@ export default function Products3D({ t }: { t: T }) {
           }
           const built = builders[i](THREE);
           const group = new THREE.Group();
-          const meshes: InstanceType<Three["Mesh"]>[] = [];
-          if (built instanceof THREE.Group) built.children.forEach((c) => meshes.push(c as InstanceType<Three["Mesh"]>));
-          else meshes.push(new THREE.Mesh(built));
+          const styled = built instanceof THREE.Group && built.userData.styled;
           const inner = new THREE.Group();
-          for (const m of meshes) {
-            m.material = metal;
-            inner.add(m);
-            inner.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry, 25), edgeMat));
+          styledMats = [];
+          if (styled) {
+            // keep the model's own colours and textures
+            inner.add(built);
+            styledMats = built.userData.materials;
+            inner.userData.materials = built.userData.materials;
+          } else {
+            const meshes: InstanceType<Three["Mesh"]>[] = [];
+            if (built instanceof THREE.Group) built.children.forEach((c) => meshes.push(c as InstanceType<Three["Mesh"]>));
+            else meshes.push(new THREE.Mesh(built));
+            for (const m of meshes) {
+              m.material = metal;
+              inner.add(m);
+              inner.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry, 25), edgeMat));
+            }
           }
           // centre and normalise size
           const box = new THREE.Box3().setFromObject(inner);
@@ -191,15 +208,18 @@ export default function Products3D({ t }: { t: T }) {
           inner.position.sub(box.getCenter(new THREE.Vector3()));
           group.add(inner);
           group.scale.setScalar(2.6 / size);
-          group.rotation.set(-0.35, 0.4, 0);
+          const rot = (styled && built.userData.rotation) || [-0.35, 0.4, 0];
+          group.rotation.set(rot[0], rot[1], rot[2]);
           scene.add(group);
           current = group;
           metal.wireframe = wireOn;
+          styledMats.forEach((m) => "wireframe" in m && (m.wireframe = wireOn));
         };
 
         const setWireOn = (on: boolean) => {
           wireOn = on;
           metal.wireframe = on;
+          styledMats.forEach((m) => "wireframe" in m && (m.wireframe = on));
           edgeMat.opacity = on ? 0.15 : 0.55;
         };
 
@@ -302,8 +322,8 @@ export default function Products3D({ t }: { t: T }) {
       <div className="product-stage" id="product-panel" role="tabpanel" aria-labelledby={`product-tab-${active}`}>
         <div className="viewer" ref={host}>
           {!ready && <p className="viewer-loading">{t.loading}</p>}
-          <span className="viewer-badge" data-real={item.real || undefined}>
-            {item.real ? t.actual : t.sample}
+          <span className="viewer-badge" data-real={item.real || item.replica || undefined}>
+            {item.real ? t.actual : item.replica ? t.replica : t.sample}
           </span>
           <span className="viewer-hint" aria-hidden="true">
             {t.drag}
@@ -312,6 +332,13 @@ export default function Products3D({ t }: { t: T }) {
         <div className="product-info">
           <h3>{item.name}</h3>
           <p>{item.desc}</p>
+          {item.photo && (
+            <a className="product-photo" href={item.photo} target="_blank" rel="noopener">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={item.photo} alt={`${t.photoAlt}: ${item.name}`} width={800} height={800} loading="lazy" decoding="async" />
+              <span>{t.photoLabel}</span>
+            </a>
+          )}
           <dl>
             {item.specs.map(([k, v]) => (
               <div key={k}>
