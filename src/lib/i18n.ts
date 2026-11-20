@@ -27,7 +27,7 @@ export function base(locale: Locale) {
 }
 
 type Item = { title: string; body: string; tags?: string[] };
-export type Product = { name: string; desc: string; specs: [string, string][] };
+export type Product = { name: string; desc: string; specs: [string, string][]; real?: boolean };
 
 const vi = {
   meta: {
@@ -136,11 +136,13 @@ const vi = {
     title: "Mô hình 3D và chi tiết gia công",
     intro: "Một số chi tiết cơ khí được dựng 3D để thể hiện quy trình thiết kế đến gia công. Kéo để xoay mô hình.",
     sample: "Mô hình mẫu minh họa",
+    actual: "Sản phẩm thực tế",
     wire: "Xem khung dây",
     solid: "Xem khối đặc",
     drag: "Kéo để xoay",
     loading: "Đang tải mô hình 3D…",
     items: [
+      { name: "Đế Deflux", real: true, desc: "Tấm đế inox HF-S0-00603 có cửa sổ xuyên lớn, hốc mặt dưới sâu 1,5 mm cùng các rãnh, lỗ định vị và lỗ móc. Mô hình dựng từ bản vẽ kỹ thuật; một vài chi tiết nhỏ là gần đúng.", specs: [["Vật liệu", "Inox SUS430"], ["Kích thước", "340 × 270 × 3 mm"], ["Cửa sổ xuyên", "251,6 × 243,48 mm"], ["Hốc mặt dưới", "Sâu 1,5 mm"], ["Lỗ chuẩn", "5 × Ø6, 1 × Ø4"]] },
       { name: "Bánh răng trụ", desc: "Bánh răng răng thẳng 18 răng, có rãnh then để truyền mô-men xoắn.", specs: [["Vật liệu", "Thép C45"], ["Số răng", "18"], ["Gia công", "Phay CNC + xử lý nhiệt"]] },
       { name: "Gá kẹp chữ U", desc: "Chi tiết gá có rãnh định vị và hai lỗ lắp chính xác, cùng bản vẽ ở phần Kỹ thuật.", specs: [["Vật liệu", "Nhôm 6061"], ["Kích thước", "160 × 90 × 30 mm"], ["Gia công", "Phay CNC 3 trục"]] },
       { name: "Mặt bích", desc: "Mặt bích có cổ, sáu lỗ bu-lông phân bố đều để nối đường ống hoặc trục.", specs: [["Vật liệu", "Inox SUS304"], ["Đường kính", "Ø120 mm"], ["Gia công", "Tiện CNC + khoan"]] },
@@ -322,11 +324,13 @@ const en: Dict = {
     title: "3D models and machined parts",
     intro: "A few mechanical parts modelled in 3D to show the path from design to machining. Drag to rotate.",
     sample: "Sample model for illustration",
+    actual: "Real product",
     wire: "Wireframe view",
     solid: "Solid view",
     drag: "Drag to rotate",
     loading: "Loading 3D model…",
     items: [
+      { name: "Deflux base plate", real: true, desc: "Stainless base plate HF-S0-00603 with a large through window, a 1.5 mm pocket on the underside, plus slots, locating holes and hook cut-outs. Modelled from the technical drawing; a few small features are approximate.", specs: [["Material", "SUS430 stainless"], ["Size", "340 × 270 × 3 mm"], ["Through window", "251.6 × 243.48 mm"], ["Underside pocket", "1.5 mm deep"], ["Datum holes", "5 × Ø6, 1 × Ø4"]] },
       { name: "Spur gear", desc: "An 18-tooth straight spur gear with a keyway for transmitting torque.", specs: [["Material", "C45 steel"], ["Teeth", "18"], ["Process", "CNC milling + heat treatment"]] },
       { name: "U-bracket", desc: "A fixture part with a locating slot and two precision bores, matching the drawing in Engineering.", specs: [["Material", "Aluminium 6061"], ["Size", "160 × 90 × 30 mm"], ["Process", "3-axis CNC milling"]] },
       { name: "Flange", desc: "A weld-neck style flange with six evenly spaced bolt holes for pipes or shafts.", specs: [["Material", "SUS304 stainless"], ["Diameter", "Ø120 mm"], ["Process", "CNC turning + drilling"]] },
@@ -505,11 +509,13 @@ const zhTW: Dict = {
     title: "3D 模型與加工零件",
     intro: "以 3D 建模的機械零件，呈現從設計到加工的流程。拖曳即可旋轉。",
     sample: "示範用範例模型",
+    actual: "實際產品",
     wire: "線框檢視",
     solid: "實體檢視",
     drag: "拖曳旋轉",
     loading: "3D 模型載入中…",
     items: [
+      { name: "Deflux 底板", real: true, desc: "不鏽鋼底板 HF-S0-00603，具大型貫穿窗口、底面 1.5 mm 深沉孔，以及溝槽、定位孔與掛鉤孔。依工程圖建模，少數細節為近似。", specs: [["材質", "SUS430 不鏽鋼"], ["尺寸", "340 × 270 × 3 mm"], ["貫穿窗口", "251.6 × 243.48 mm"], ["底面沉孔", "深 1.5 mm"], ["基準孔", "5 × Ø6、1 × Ø4"]] },
       { name: "正齒輪", desc: "18 齒直齒正齒輪，附鍵槽以傳遞扭矩。", specs: [["材質", "S45C 鋼"], ["齒數", "18"], ["加工", "CNC 銑削 + 熱處理"]] },
       { name: "U 型夾具", desc: "具定位槽與兩個精密孔的治具零件，與工程區塊中的圖面相同。", specs: [["材質", "鋁 6061"], ["尺寸", "160 × 90 × 30 mm"], ["加工", "三軸 CNC 銑削"]] },
       { name: "法蘭", desc: "帶頸法蘭，六個平均分布的螺栓孔，用於連接管路或軸。", specs: [["材質", "SUS304 不鏽鋼"], ["直徑", "Ø120 mm"], ["加工", "CNC 車削 + 鑽孔"]] },

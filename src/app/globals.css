@@ -2281,6 +2281,14 @@ body {
   }
 }
 
+@media (min-width: 960px) {
+  .viewer {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 480px;
+  }
+}
+
 .viewer canvas {
   position: absolute;
   inset: 0;
@@ -2313,6 +2321,11 @@ body {
 .viewer-badge {
   top: 16px;
   left: 16px;
+}
+
+.viewer-badge[data-real] {
+  border-color: rgba(0, 213, 255, 0.55);
+  color: #7fe9ff;
 }
 
 .viewer-hint {

@@ -43,7 +43,8 @@ npm run build      # tạo thư mục out/ chứa toàn bộ website
 
 ## Sản phẩm 3D
 
-Bốn mô hình hiện tại là **mẫu minh họa** được dựng bằng code (bánh răng, gá kẹp, mặt bích, trục bậc) và có nhãn "Mô hình mẫu minh họa" trên trang.
+- **Đế Deflux HF-S0-00603** là sản phẩm thực tế, dựng từ bản vẽ (`src/components/deflux.ts`), có nhãn "Sản phẩm thực tế".
+- Bốn mô hình còn lại (bánh răng, gá kẹp, mặt bích, trục bậc) là **mẫu minh họa**, có nhãn "Mô hình mẫu minh họa". Xóa khỏi `builders` trong `Products3D.tsx` và khỏi `products.items` trong `i18n.ts` khi đã có đủ sản phẩm thật.
 Khi có sản phẩm thật, xuất file `.glb` từ phần mềm CAD, đặt vào `public/models/`, rồi thay hàm dựng mô hình tương ứng bằng `GLTFLoader` của Three.js.
 
 ## Giao diện sáng / tối

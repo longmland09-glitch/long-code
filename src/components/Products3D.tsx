@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Dict } from "@/lib/i18n";
+import { deflux } from "./deflux";
 
 type T = Dict["products"];
 type Three = typeof import("three");
@@ -108,7 +109,7 @@ function shaft(THREE: Three) {
   return g;
 }
 
-const builders = [gear, bracket, flange, shaft];
+const builders = [deflux, gear, bracket, flange, shaft];
 
 export default function Products3D({ t }: { t: T }) {
   const host = useRef<HTMLDivElement>(null);
@@ -301,7 +302,9 @@ export default function Products3D({ t }: { t: T }) {
       <div className="product-stage" id="product-panel" role="tabpanel" aria-labelledby={`product-tab-${active}`}>
         <div className="viewer" ref={host}>
           {!ready && <p className="viewer-loading">{t.loading}</p>}
-          <span className="viewer-badge">{t.sample}</span>
+          <span className="viewer-badge" data-real={item.real || undefined}>
+            {item.real ? t.actual : t.sample}
+          </span>
           <span className="viewer-hint" aria-hidden="true">
             {t.drag}
           </span>
